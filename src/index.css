@@ -8,61 +8,61 @@
 
 @layer base {
   :root {
-    /* Modern Portfolio Color Palette */
-    --background: 220 26% 14%;
-    --foreground: 220 9% 94%;
+    /* Modern Black Portfolio Theme */
+    --background: 0 0% 3%;
+    --foreground: 0 0% 98%;
 
-    --card: 220 26% 16%;
-    --card-foreground: 220 9% 94%;
+    --card: 0 0% 6%;
+    --card-foreground: 0 0% 98%;
 
-    --popover: 220 26% 16%;
-    --popover-foreground: 220 9% 94%;
+    --popover: 0 0% 6%;
+    --popover-foreground: 0 0% 98%;
 
-    /* Professional Brand Colors */
-    --primary: 217 91% 60%;
-    --primary-foreground: 220 9% 94%;
-    --primary-glow: 217 91% 70%;
+    /* Modern Accent Colors */
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 3%;
+    --primary-glow: 0 0% 88%;
 
-    --secondary: 264 83% 58%;
-    --secondary-foreground: 220 9% 94%;
-    --secondary-glow: 264 83% 68%;
+    --secondary: 270 100% 70%;
+    --secondary-foreground: 0 0% 98%;
+    --secondary-glow: 270 100% 80%;
 
-    --accent: 142 76% 36%;
-    --accent-foreground: 220 9% 94%;
-    --accent-glow: 142 76% 46%;
+    --accent: 120 100% 50%;
+    --accent-foreground: 0 0% 3%;
+    --accent-glow: 120 100% 60%;
 
-    --muted: 220 26% 18%;
-    --muted-foreground: 220 9% 60%;
+    --muted: 0 0% 8%;
+    --muted-foreground: 0 0% 65%;
 
     --destructive: 0 84% 60%;
-    --destructive-foreground: 220 9% 94%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 220 26% 20%;
-    --input: 220 26% 18%;
-    --ring: 217 91% 60%;
+    --border: 0 0% 12%;
+    --input: 0 0% 8%;
+    --ring: 0 0% 98%;
 
     --radius: 0.75rem;
 
     /* Portfolio Specific Colors */
-    --hero-bg: 220 26% 12%;
-    --section-bg: 220 26% 14%;
-    --glass-bg: 220 26% 18%;
-    --glass-border: 220 26% 25%;
+    --hero-bg: 0 0% 2%;
+    --section-bg: 0 0% 4%;
+    --glass-bg: 0 0% 8%;
+    --glass-border: 0 0% 15%;
     
-    /* Gradients */
+    /* Modern Gradients */
     --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
     --gradient-secondary: linear-gradient(135deg, hsl(var(--secondary)), hsl(var(--secondary-glow)));
     --gradient-accent: linear-gradient(135deg, hsl(var(--accent)), hsl(var(--accent-glow)));
-    --gradient-hero: linear-gradient(135deg, hsl(var(--hero-bg)), hsl(var(--section-bg)));
+    --gradient-hero: radial-gradient(ellipse at center, hsl(var(--hero-bg)), hsl(0 0% 1%));
     --gradient-glass: linear-gradient(135deg, 
-      hsla(var(--glass-bg), 0.8), 
-      hsla(var(--glass-bg), 0.4)
+      hsla(var(--glass-bg), 0.9), 
+      hsla(var(--glass-bg), 0.6)
     );
 
-    /* Shadows & Effects */
-    --shadow-glow: 0 0 50px hsla(var(--primary), 0.3);
-    --shadow-card: 0 20px 50px hsla(0, 0%, 0%, 0.4);
-    --shadow-glass: 0 8px 32px hsla(0, 0%, 0%, 0.3);
+    /* Modern Shadows & Effects */
+    --shadow-glow: 0 0 40px hsla(var(--secondary), 0.4);
+    --shadow-card: 0 25px 60px hsla(0, 0%, 0%, 0.6);
+    --shadow-glass: 0 8px 32px hsla(0, 0%, 0%, 0.4);
 
     /* Animations */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -70,47 +70,47 @@
   }
 
   .light {
-    --background: 220 9% 97%;
-    --foreground: 220 26% 14%;
+    --background: 0 0% 98%;
+    --foreground: 0 0% 3%;
 
-    --card: 220 9% 99%;
-    --card-foreground: 220 26% 14%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3%;
 
-    --popover: 220 9% 99%;
-    --popover-foreground: 220 26% 14%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3%;
 
-    --primary: 217 91% 50%;
-    --primary-foreground: 220 9% 97%;
-    --primary-glow: 217 91% 60%;
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+    --primary-glow: 0 0% 20%;
 
-    --secondary: 264 83% 48%;
-    --secondary-foreground: 220 9% 97%;
-    --secondary-glow: 264 83% 58%;
+    --secondary: 270 100% 60%;
+    --secondary-foreground: 0 0% 98%;
+    --secondary-glow: 270 100% 70%;
 
-    --accent: 142 76% 26%;
-    --accent-foreground: 220 9% 97%;
-    --accent-glow: 142 76% 36%;
+    --accent: 120 100% 40%;
+    --accent-foreground: 0 0% 98%;
+    --accent-glow: 120 100% 50%;
 
-    --muted: 220 9% 92%;
-    --muted-foreground: 220 9% 40%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
 
-    --border: 220 9% 87%;
-    --input: 220 9% 92%;
-    --ring: 217 91% 50%;
+    --border: 0 0% 90%;
+    --input: 0 0% 96%;
+    --ring: 0 0% 9%;
 
-    --hero-bg: 220 9% 95%;
-    --section-bg: 220 9% 97%;
-    --glass-bg: 220 9% 99%;
-    --glass-border: 220 9% 85%;
+    --hero-bg: 0 0% 99%;
+    --section-bg: 0 0% 98%;
+    --glass-bg: 0 0% 100%;
+    --glass-border: 0 0% 85%;
     
-    --gradient-hero: linear-gradient(135deg, hsl(var(--hero-bg)), hsl(var(--section-bg)));
+    --gradient-hero: radial-gradient(ellipse at center, hsl(var(--hero-bg)), hsl(0 0% 95%));
     --gradient-glass: linear-gradient(135deg, 
       hsla(var(--glass-bg), 0.9), 
-      hsla(var(--glass-bg), 0.6)
+      hsla(var(--glass-bg), 0.7)
     );
 
-    --shadow-glow: 0 0 50px hsla(var(--primary), 0.2);
-    --shadow-card: 0 20px 50px hsla(0, 0%, 0%, 0.1);
+    --shadow-glow: 0 0 40px hsla(var(--secondary), 0.3);
+    --shadow-card: 0 25px 60px hsla(0, 0%, 0%, 0.15);
     --shadow-glass: 0 8px 32px hsla(0, 0%, 0%, 0.1);
   }
 }

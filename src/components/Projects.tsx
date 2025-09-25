@@ -1,9 +1,13 @@
 import { Button } from '@/components/ui/button';
-import { ExternalLink, Github } from 'lucide-react';
+import { ExternalLink, Github, ArrowRight } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const Projects = () => {
+  const navigate = useNavigate();
+
   const projects = [
     {
+      id: 'vega-copy-trading',
       title: "Vega - Copy Trading Platform",
       description: "A comprehensive CopyTrading program for stock market training with real-time tracking, detailed analytics, and cloud storage capabilities. Features multi-database integration and advanced graphical analysis tools.",
       technologies: ["Node.js", "MongoDB", "React", "Chart.js", "Cloud Storage"],
@@ -18,6 +22,7 @@ const Projects = () => {
       ]
     },
     {
+      id: 'veronika-ai',
       title: "Veronika - AI Assistant",
       description: "A sophisticated AI assistant with cutting-edge capabilities including data fetching, API analysis, language translation, voice commands, and computer automation. Features continuous learning and ethical guidelines.",
       technologies: ["Python", "TensorFlow", "NLP", "APIs", "Automation"],
@@ -31,6 +36,7 @@ const Projects = () => {
       ]
     },
     {
+      id: 'friday-trading-ai',
       title: "F.R.I.D.A.Y - Trading AI",
       description: "Automated share market trading system using Python for swift stock analysis, enhanced prediction algorithms, and streamlined financial report processing to minimize manual research and maximize efficiency.",
       technologies: ["Python", "Machine Learning", "Financial APIs", "Data Analytics"],
@@ -44,6 +50,7 @@ const Projects = () => {
       ]
     },
     {
+      id: 'node-translator',
       title: "Node Translator",
       description: "Sleek Node.js web application with MySQL database for dynamic translations using Google Translate API. Features smart caching system to reduce API calls and supports 160 languages.",
       technologies: ["Node.js", "MySQL", "Google Translate API", "Express"],
@@ -58,15 +65,19 @@ const Projects = () => {
     }
   ];
 
+  const handleProjectClick = (projectId: string) => {
+    navigate(`/project/${projectId}`);
+  };
+
   return (
     <section id="projects" className="py-20 bg-background relative">
       <div className="container mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-16 scroll-animate">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Featured <span className="text-gradient-primary">Projects</span>
+            Featured <span className="text-gradient-secondary">Projects</span>
           </h2>
-          <div className="w-24 h-1 bg-primary mx-auto rounded-full mb-8"></div>
+          <div className="w-24 h-1 bg-secondary mx-auto rounded-full mb-8"></div>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             A showcase of innovative solutions spanning full-stack development, AI/ML, 
             and algorithmic trading systems.
@@ -78,16 +89,17 @@ const Projects = () => {
           {projects.map((project, index) => (
             <div 
               key={index}
-              className="project-card group scroll-animate"
+              className="project-card group scroll-animate cursor-pointer"
               style={{ animationDelay: `${index * 0.1}s` }}
+              onClick={() => handleProjectClick(project.id)}
             >
               {/* Project Header */}
               <div className="flex justify-between items-start mb-4">
                 <div>
-                  <div className="text-sm text-primary font-medium mb-1">
+                  <div className="text-sm text-secondary font-medium mb-1">
                     {project.category}
                   </div>
-                  <h3 className="text-xl font-bold group-hover:text-gradient-primary transition-all duration-300">
+                  <h3 className="text-xl font-bold group-hover:text-gradient-secondary transition-all duration-300">
                     {project.title}
                   </h3>
                   <div className="text-sm text-muted-foreground mt-1">
@@ -100,7 +112,10 @@ const Projects = () => {
                       variant="ghost"
                       size="icon"
                       className="opacity-70 hover:opacity-100 glow-on-hover"
-                      onClick={() => window.open(project.github, '_blank')}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        window.open(project.github, '_blank');
+                      }}
                     >
                       <Github className="h-4 w-4" />
                     </Button>
@@ -110,7 +125,7 @@ const Projects = () => {
                     size="icon"
                     className="opacity-70 hover:opacity-100 glow-on-hover"
                   >
-                    <ExternalLink className="h-4 w-4" />
+                    <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </div>
               </div>
@@ -122,7 +137,7 @@ const Projects = () => {
 
               {/* Key Features */}
               <div className="mb-6">
-                <h4 className="font-semibold mb-3 text-sm text-gradient-secondary">
+                <h4 className="font-semibold mb-3 text-sm text-gradient-primary">
                   Key Features
                 </h4>
                 <ul className="space-y-2">
@@ -131,7 +146,7 @@ const Projects = () => {
                       key={featureIndex}
                       className="flex items-center space-x-2 text-sm text-muted-foreground"
                     >
-                      <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
+                      <div className="w-1.5 h-1.5 bg-secondary rounded-full"></div>
                       <span>{feature}</span>
                     </li>
                   ))}
@@ -140,18 +155,26 @@ const Projects = () => {
 
               {/* Technologies */}
               <div>
-                <h4 className="font-semibold mb-3 text-sm text-gradient-secondary">
+                <h4 className="font-semibold mb-3 text-sm text-gradient-primary">
                   Technologies Used
                 </h4>
                 <div className="flex flex-wrap gap-2">
                   {project.technologies.map((tech, techIndex) => (
                     <span
                       key={techIndex}
-                      className="px-3 py-1 bg-muted rounded-full text-xs font-medium text-muted-foreground hover:bg-primary/20 hover:text-primary transition-all duration-200"
+                      className="px-3 py-1 bg-muted rounded-full text-xs font-medium text-muted-foreground hover:bg-secondary/20 hover:text-secondary transition-all duration-200"
                     >
                       {tech}
                     </span>
                   ))}
+                </div>
+              </div>
+
+              {/* View Details Button */}
+              <div className="mt-6 pt-4 border-t border-border/50">
+                <div className="flex items-center justify-between">
+                  <span className="text-sm text-muted-foreground">Click to view details</span>
+                  <ArrowRight className="h-4 w-4 text-secondary group-hover:translate-x-1 transition-transform" />
                 </div>
               </div>
             </div>
