@@ -83,11 +83,10 @@ const SkillsModern = () => {
   ];
 
   const certifications = [
-    "Advanced Computer Application - Global Computer Training Academy",
-    "Business Analytics using WEKA - Infosys Springboard",
-    "Geoprocessing Using Python - Indian Institute of Remote Sensing",
-    "Data Mining and Decision Making - Infosys Springboard",
-    "Ethical Hacking from Scratch - zSecurity/Udemy"
+    "Learn Ethical Hacking from Scratch - zSecurity | Udemy (2023)",
+    "Geoprocessing Using Python - Indian Institute of Remote Sensing (2023)",
+    "Data Mining and Business Analytics - Infosys | Springboard (2023)",
+    "Advance Computer Application - Global Computer Training Academy (2019)"
   ];
 
   const getLevelColor = (level: string) => {

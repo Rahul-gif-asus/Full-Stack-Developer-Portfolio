@@ -3,83 +3,141 @@ const Experience = () => {
     {
       title: "Full Stack Developer",
       company: "Script Assist",
-      location: "London, UK",
-      period: "2023 - Present",
+      location: "London, United Kingdom",
+      period: "Feb 2024 - Present",
       type: "Remote",
-      description: "Developing scalable web applications and implementing innovative solutions for international clients.",
+      description: "Developed a scalable State Management System using NodeJS, TypeScript, PostgreSQL, and React.js.",
       achievements: [
-        "Built responsive full-stack applications using modern technologies",
-        "Collaborated with international teams across different time zones",
-        "Implemented best practices for code quality and performance optimization"
+        "Developed a scalable State Management System using NodeJS, TypeScript, PostgreSQL, and React.js",
+        "Implemented secure authentication and role-based access control for different user types",
+        "Designed responsive UI components with Redux for efficient state management",
+        "Created RESTful APIs for seamless communication between frontend and backend services"
       ],
-      technologies: ["React", "Node.js", "MongoDB", "TypeScript"]
+      technologies: ["NodeJS", "TypeScript", "PostgreSQL", "React.js", "Redux"]
     },
     {
       title: "Full Stack Developer",
       company: "Student Diwan",
       location: "Qatar",
-      period: "2022 - 2023",
+      period: "May 2023 - Feb 2024",
       type: "Remote",
-      description: "Developed educational platforms and student management systems with focus on user experience and scalability.",
+      description: "Built a comprehensive school management system catering to multiple institutions.",
       achievements: [
-        "Created comprehensive student management systems",
-        "Designed intuitive user interfaces for educational platforms",
-        "Optimized database performance for large-scale applications"
+        "Built a comprehensive school management system catering to multiple institutions",
+        "Implemented MongoDB for database management and React.js for responsive frontend interfaces",
+        "Developed REST APIs for secure data exchange between various system components",
+        "Created an intuitive admin dashboard for school administrators to manage operations efficiently"
       ],
-      technologies: ["Vue.js", "Express", "MySQL", "JavaScript"]
+      technologies: ["MongoDB", "React.js", "REST APIs", "Express", "Node.js"]
     },
     {
-      title: "Data Analyst",
-      company: "Omspace Rocket & Exploration",
-      location: "India",
-      period: "2021 - 2022",
+      title: "Coordinator of Volunteers",
+      company: "Had-Anhad NGO",
+      location: "Indore, Madhya Pradesh, India",
+      period: "Mar 2023 - Apr 2023",
       type: "On-site",
-      description: "Analyzed complex datasets and developed data-driven insights for space technology projects and research initiatives.",
+      description: "Led a team of volunteers in coordinating community development initiatives.",
       achievements: [
-        "Processed and analyzed large-scale space technology datasets",
-        "Developed predictive models for rocket performance optimization",
-        "Created comprehensive reports for technical decision-making"
+        "Led a team of volunteers in coordinating community development initiatives",
+        "Managed database systems for tracking volunteer participation and project outcomes",
+        "Organized training sessions for new volunteers to ensure effective community engagement",
+        "Successfully coordinated multiple concurrent projects across diverse communities"
       ],
-      technologies: ["Python", "Pandas", "NumPy", "Data Visualization"]
+      technologies: ["Leadership", "Database Management", "Community Engagement", "Project Coordination"]
+    },
+    {
+      title: "Space Launch Vehicle Intern",
+      company: "Omspace Rocket & Exploration Private Limited",
+      location: "Ahmedabad, Gujarat",
+      period: "Dec 2022 - Jan 2023",
+      type: "On-site",
+      description: "Contributed to statistical data analysis for rocket engine performance optimization.",
+      achievements: [
+        "Contributed to statistical data analysis for rocket engine performance optimization",
+        "Participated in design and analysis of launch vehicle components using CAD software",
+        "Conducted programming tasks for systems monitoring and performance tracking",
+        "Collaborated in trajectory analysis and mission planning for rocket launches"
+      ],
+      technologies: ["Python", "Statistical Analysis", "CAD Software", "Data Analysis"]
+    },
+    {
+      title: "Cohort Tech Lead",
+      company: "Commutiny - The Youth Collective",
+      location: "Delhi, India",
+      period: "Dec 2021 - Feb 2022",
+      type: "Remote",
+      description: "Led database administration for a network of 30+ NGOs, streamlining data management processes.",
+      achievements: [
+        "Led database administration for a network of 30+ NGOs, streamlining data management processes",
+        "Provided technical support for statistical data analysis related to social impact projects",
+        "Coordinated team projects and implemented systems for tracking program effectiveness",
+        "Applied data science techniques to generate insights for community development initiatives"
+      ],
+      technologies: ["Database Administration", "Data Science", "Team Leadership", "Statistical Analysis"]
     },
     {
       title: "Co-Founder",
       company: "Express Yourself Community",
-      location: "India",
-      period: "2020 - 2022",
+      location: "Indore, Madhya Pradesh, India",
+      period: "May 2020 - Feb 2022",
       type: "Leadership",
-      description: "Co-founded and managed a thriving community platform focused on creative expression and skill development.",
+      description: "Co-founded and led a community dedicated to fostering personal growth and self-expression.",
       achievements: [
-        "Successfully launched and managed community initiatives",
-        "Led team coordination and strategic planning",
-        "Developed community engagement strategies and growth metrics"
+        "Co-founded and led a community dedicated to fostering personal growth and self-expression",
+        "Built an online platform connecting diverse members across multiple regions",
+        "Developed and implemented community engagement strategies that increased active participation",
+        "Created and managed digital content to strengthen community bonds during the pandemic"
       ],
-      technologies: ["Leadership", "Community Management", "Strategic Planning"]
+      technologies: ["Community Building", "Digital Content", "Strategic Planning", "Leadership"]
     }
   ];
 
   const education = [
     {
-      degree: "B.Tech in Computer Science and Engineering",
-      institution: "Bansal Institute of Research Technology and Science",
+      degree: "Bachelor of Technology - BTech, Computer Science",
+      institution: "Rajiv Gandhi Proudyogiki Vishwavidyalaya (RGPV)",
       location: "Bhopal, Madhya Pradesh",
-      period: "2019 - 2023",
+      period: "Aug 2019 - May 2023",
       grade: "7.91 CGPA",
       highlights: [
-        "Specialized in Data Structures & Algorithms",
-        "Completed advanced coursework in Machine Learning",
+        "Specialized in Computer Science and Engineering",
+        "Completed advanced coursework in Data Structures & Algorithms",
         "Participated in technical projects and competitions"
       ]
     },
     {
-      degree: "Higher Secondary Education (Class 12th)",
+      degree: "Bachelor of Technology - BTech, Computer Software Engineering",
+      institution: "Bansal Institute of Science & Technology",
+      location: "Raisen Road, Kokta, Anand Nagar, Bhopal - 462021",
+      period: "Aug 2019 - May 2023",
+      grade: "7.91 (First Division with Honours)",
+      highlights: [
+        "Computer Software Engineering specialization",
+        "First Division with Honours",
+        "Comprehensive software development curriculum"
+      ]
+    },
+    {
+      degree: "Science",
       institution: "Seva Sadan Higher Secondary School",
       location: "Burhanpur, Madhya Pradesh",
-      period: "2019",
-      grade: "53%",
+      period: "Aug 2019",
+      grade: "86%",
       highlights: [
-        "Foundation in Mathematics and Computer Science",
+        "Foundation in Mathematics and Science",
         "Active participation in technical activities"
+      ]
+    },
+    {
+      degree: "Advance Computer Application",
+      institution: "Global Computer Training Academy",
+      location: "Burhanpur, Madhya Pradesh",
+      period: "Apr 2019 - Aug 2019",
+      grade: "A+",
+      highlights: [
+        "Computer Hardware Specification",
+        "Computer Basics and Internet Working",
+        "MS-Office proficiency"
       ]
     }
   ];

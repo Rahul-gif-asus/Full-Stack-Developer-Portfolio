@@ -4,10 +4,11 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Mail, Phone, MapPin, Github, Linkedin, Send } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import { saveContactForm, ContactFormData } from '@/lib/firebase';
 
 const Contact = () => {
   const { toast } = useToast();
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<ContactFormData>({
     name: '',
     email: '',
     subject: '',
@@ -31,7 +32,7 @@ const Contact = () => {
     {
       icon: MapPin,
       label: 'Location',
-      value: 'Burhanpur, India',
+      value: 'Ahmedabad, India',
       href: '#'
     }
   ];
@@ -40,14 +41,14 @@ const Contact = () => {
     {
       icon: Github,
       label: 'GitHub',
-      href: 'https://github.com/rahul-vishwakarma',
-      username: '@rahul-vishwakarma'
+      href: 'https://github.com/Rahul-gif-asus',
+      username: '@Rahul-gif-asus'
     },
     {
       icon: Linkedin,
       label: 'LinkedIn',
       href: 'https://linkedin.com/in/rahul-vishwakarma-101346192',
-      username: 'rahul-vishwakarma'
+      username: 'rahul-vishwakarma-101346192'
     },
     {
       icon: Mail,
@@ -69,21 +70,43 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    setTimeout(() => {
+    // Simple validation
+    if (!formData.name || !formData.email || !formData.subject || !formData.message) {
       toast({
-        title: "Message Sent!",
-        description: "Thank you for your message. I'll get back to you soon!",
+        title: "Error",
+        description: "Please fill out all fields",
+        variant: "destructive"
+      });
+      setIsSubmitting(false);
+      return;
+    }
+    
+    try {
+      // Save to Firebase
+      await saveContactForm(formData);
+      
+      toast({
+        title: "Success!",
+        description: "Your message has been sent. I'll get back to you soon.",
       });
       
+      // Reset form
       setFormData({
         name: '',
         email: '',
         subject: '',
         message: ''
       });
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      toast({
+        title: "Error",
+        description: "Failed to send message. Please try again later.",
+        variant: "destructive"
+      });
+    } finally {
       setIsSubmitting(false);
-    }, 1000);
+    }
   };
 
   return (

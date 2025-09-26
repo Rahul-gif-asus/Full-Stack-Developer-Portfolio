@@ -7,60 +7,80 @@ const Projects = () => {
 
   const projects = [
     {
+      id: 'spacex-launch-explorer',
+      title: "SpaceX Launch Explorer",
+      description: "A comprehensive web application providing detailed information on past and upcoming SpaceX rocket launches with responsive design.",
+      technologies: ["React.js", "JavaScript", "REST APIs", "Mantine UI", "Zustand"],
+      category: "Web Application",
+      github: "https://github.com/Rahul-gif-asus/SpaceX-Launch-Explorer",
+      link: "https://github.com/Rahul-gif-asus/SpaceX-Launch-Explorer",
+      period: "Sep 2024",
+      features: [
+        "Real-time SpaceX launch data",
+        "Responsive design",
+        "REST API integration",
+        "Modern UI with Mantine"
+      ]
+    },
+    {
+      id: 'crowdsource-platform',
+      title: "CrowdSource Platform",
+      description: "A dynamic web application designed to foster collaborative problem-solving by allowing users to post challenges, propose solutions, and engage in meaningful discussions.",
+      technologies: ["React.js", "Redux", "Node.js", "Express", "MongoDB", "Material-UI", "JWT"],
+      category: "Full-Stack Application",
+      github: "https://github.com/Rahul-gif-asus/CrowdSourcePlatform",
+      period: "Aug 2024",
+      features: [
+        "User authentication & authorization",
+        "Challenge posting system",
+        "Solution proposals",
+        "Discussion forums"
+      ]
+    },
+    {
+      id: 'dividend-roi-calculator',
+      title: "Dividend ROI Calculator",
+      description: "A robust tool designed to empower investors by providing detailed insights into potential dividend earnings from stocks listed on the National Stock Exchange (NSE) of India.",
+      technologies: ["Python", "MongoDB", "Angel One API", "Data Analysis"],
+      category: "Trading Application",
+      github: "https://github.com/Rahul-gif-asus/DividendROI-Calculator",
+      period: "Mar 2023 - Jul 2023",
+      features: [
+        "NSE stock analysis",
+        "Dividend calculations",
+        "ROI projections",
+        "Data visualization"
+      ]
+    },
+    {
       id: 'vega-copy-trading',
       title: "Vega - Copy Trading Platform",
-      description: "A comprehensive CopyTrading program for stock market training with real-time tracking, detailed analytics, and cloud storage capabilities. Features multi-database integration and advanced graphical analysis tools.",
-      technologies: ["Node.js", "MongoDB", "React", "Chart.js", "Cloud Storage"],
-      category: "Full-Stack Application",
+      description: "A powerful tool designed to revolutionize stock trading by enabling users to replicate trades from top-performing strategies with real-time data analysis.",
+      technologies: ["Python", "MongoDB", "REST APIs", "Web Scraping", "Statistical Analysis"],
+      category: "Trading Application",
       github: "https://github.com/Rahul-gif-asus/Vega_CopyTrading_Platform",
-      period: "July - Nov 2022",
+      period: "Jul 2022 - Nov 2022",
       features: [
-        "Real-time trade tracking",
-        "Multi-database storage",
-        "Advanced analytics dashboard",
-        "Cloud & local data management"
+        "Copy trading algorithms",
+        "Real-time data analysis",
+        "Strategy replication",
+        "Performance tracking"
       ]
     },
     {
-      id: 'veronika-ai',
-      title: "Veronika - AI Assistant",
-      description: "A sophisticated AI assistant with cutting-edge capabilities including data fetching, API analysis, language translation, voice commands, and computer automation. Features continuous learning and ethical guidelines.",
-      technologies: ["Python", "TensorFlow", "NLP", "APIs", "Automation"],
-      category: "AI/ML Project",
-      period: "May 2021 - Aug 2023",
-      features: [
-        "Advanced NLP processing",
-        "Multi-language support",
-        "Voice command integration",
-        "Computer automation scripts"
-      ]
-    },
-    {
-      id: 'friday-trading-ai',
-      title: "F.R.I.D.A.Y - Trading AI",
-      description: "Automated share market trading system using Python for swift stock analysis, enhanced prediction algorithms, and streamlined financial report processing to minimize manual research and maximize efficiency.",
-      technologies: ["Python", "Machine Learning", "Financial APIs", "Data Analytics"],
-      category: "AI/ML Project",
-      period: "2022 - 2023",
-      features: [
-        "Automated trading algorithms",
-        "Real-time market analysis",
-        "Predictive modeling",
-        "Risk management systems"
-      ]
-    },
-    {
-      id: 'node-translator',
-      title: "Node Translator",
-      description: "Sleek Node.js web application with MySQL database for dynamic translations using Google Translate API. Features smart caching system to reduce API calls and supports 160 languages.",
-      technologies: ["Node.js", "MySQL", "Google Translate API", "Express"],
+      id: 'smart-translator',
+      title: "Smart Translator",
+      description: "A cutting-edge language translation tool that delivers real-time, high-precision translations across multiple languages, enabling smooth cross-cultural communication.",
+      technologies: ["HTML/CSS", "JavaScript", "Node.js", "MongoDB", "REST APIs", "React.js", "Git"],
       category: "Web Application",
-      period: "Aug 2021",
+      github: "https://github.com/Rahul-gif-asus/smartTranslator",
+      link: "https://github.com/Rahul-gif-asus/smartTranslator",
+      period: "Aug 2021 - Sep 2021",
       features: [
-        "160+ language support",
-        "Smart caching system",
-        "API optimization",
-        "Real-time translation"
+        "Multi-language support",
+        "Real-time translation",
+        "High-precision results",
+        "Cross-cultural communication"
       ]
     }
   ];
@@ -124,6 +144,10 @@ const Projects = () => {
                     variant="ghost"
                     size="icon"
                     className="opacity-70 hover:opacity-100 glow-on-hover"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleProjectClick(project.id);
+                    }}
                   >
                     <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
                   </Button>
@@ -173,7 +197,7 @@ const Projects = () => {
               {/* View Details Button */}
               <div className="mt-6 pt-4 border-t border-border/50">
                 <div className="flex items-center justify-between">
-                  <span className="text-sm text-muted-foreground">Click to view details</span>
+                  <span className="text-sm text-muted-foreground">Click anywhere or arrow to view details</span>
                   <ArrowRight className="h-4 w-4 text-secondary group-hover:translate-x-1 transition-transform" />
                 </div>
               </div>

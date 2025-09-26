@@ -1,17 +1,22 @@
 import { Button } from '@/components/ui/button';
 import { Download, Mail, Github, Linkedin, MapPin, Phone } from 'lucide-react';
-import developerAvatar from '@/assets/developer-avatar.jpg';
+import { bioData } from '@/data/resume-data';
 
 const Hero = () => {
   const handleDownloadResume = () => {
-    // Placeholder for resume download
-    console.log('Download resume functionality would be implemented here');
+    // Create a temporary link element to trigger download
+    const link = document.createElement('a');
+    link.href = '/resume.pdf';
+    link.download = 'Rahul_Vishwakarma_Resume.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   const socialLinks = [
     { icon: Mail, href: 'mailto:karmarahul67@gmail.com', label: 'Email' },
     { icon: Linkedin, href: 'https://linkedin.com/in/rahul-vishwakarma-101346192', label: 'LinkedIn' },
-    { icon: Github, href: 'https://github.com/rahul-vishwakarma', label: 'GitHub' },
+    { icon: Github, href: 'https://github.com/Rahul-gif-asus', label: 'GitHub' },
   ];
 
   return (
@@ -33,16 +38,12 @@ const Hero = () => {
             <div className="space-y-4">
               <div className="flex items-center justify-center lg:justify-start space-x-2 text-muted-foreground">
                 <MapPin className="h-4 w-4" />
-                <span className="text-sm">Burhanpur, India</span>
+                <span className="text-sm">Ahmedabad, India</span>
               </div>
               
               <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight relative">
                 <div className="relative overflow-hidden">
-                  <span className="inline-block text-gradient-primary animate-slide-up" style={{ animationDelay: '0.2s' }}>Rahul</span>
-                </div>
-                <br />
-                <div className="relative overflow-hidden">
-                  <span className="inline-block text-foreground animate-slide-up" style={{ animationDelay: '0.4s' }}>Vishwakarma</span>
+                  <span className="inline-block text-gradient-primary animate-slide-up" style={{ animationDelay: '0.2s' }}>Rahul Vishwakarma</span>
                 </div>
                 {/* Animated text decoration */}
                 <div className="absolute -top-2 -right-4 text-2xl animate-bounce-soft" style={{ animationDelay: '1s' }}>✨</div>
@@ -121,19 +122,16 @@ const Hero = () => {
           {/* Avatar */}
           <div className="flex justify-center lg:justify-end animate-float">
             <div className="relative group">
-              {/* Animated background rings */}
+              {/* Animated background rings - behind the image */}
               <div className="absolute inset-0 rounded-full bg-gradient-to-r from-secondary/30 to-accent/30 animate-spin" style={{ animationDuration: '20s' }}></div>
               <div className="absolute inset-2 rounded-full bg-gradient-to-r from-accent/20 to-primary/20 animate-spin" style={{ animationDuration: '15s', animationDirection: 'reverse' }}></div>
               
               <div className="relative glass rounded-full p-4 animate-pulse-glow">
                 <img
-                  src={developerAvatar}
+                  src={bioData.profileImage}
                   alt="Rahul Vishwakarma"
-                  className="w-80 h-80 rounded-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="w-80 h-80 rounded-full object-cover transition-transform duration-500 group-hover:scale-105 relative z-10"
                 />
-                
-                {/* Hover overlay */}
-                <div className="absolute inset-4 rounded-full bg-gradient-to-t from-secondary/20 via-transparent to-accent/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               </div>
               
               {/* Floating Tech Icons */}

@@ -3,48 +3,220 @@ import { Button } from '@/components/ui/button';
 import { ArrowLeft, Github, ExternalLink, Calendar, Users, Target, Zap } from 'lucide-react';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
+import ContactModal from '@/components/ContactModal';
 
 const ProjectDetail = () => {
   const { projectId } = useParams();
   const navigate = useNavigate();
 
   const projects = {
-    'vega-copy-trading': {
-      title: "Vega - Copy Trading Platform",
-      subtitle: "Advanced Stock Market Training & Analytics Platform",
-      description: "A comprehensive CopyTrading program designed for stock market training with real-time tracking capabilities, detailed analytics, and robust data management systems.",
-      longDescription: `Vega represents a sophisticated approach to copy trading education and practice. The platform provides users with a comprehensive environment to learn, practice, and analyze trading strategies without real financial risk.
+    'spacex-launch-explorer': {
+      title: "SpaceX Launch Explorer",
+      subtitle: "Comprehensive Rocket Launch Information Platform",
+      description: "A comprehensive web application providing detailed information on past and upcoming SpaceX rocket launches with responsive design and real-time data integration.",
+      longDescription: `SpaceX Launch Explorer represents a modern approach to space mission tracking and information dissemination. The platform provides users with comprehensive access to SpaceX's launch history, upcoming missions, and detailed mission specifications.
 
-The system incorporates advanced real-time tracking mechanisms that monitor and record trading activities across multiple databases simultaneously. This multi-database approach ensures data redundancy, improved performance, and comprehensive analytics capabilities.
+The application leverages SpaceX's public API to deliver real-time data about rocket launches, including mission details, launch windows, payload information, and mission outcomes. The responsive design ensures optimal viewing experience across all devices, from mobile phones to desktop computers.
 
-The platform's analytical engine processes vast amounts of trading data to provide users with detailed insights into their trading patterns, success rates, and areas for improvement. The graphical analysis tools offer intuitive visualizations of trading performance, market trends, and portfolio evolution.`,
-      technologies: ["Node.js", "MongoDB", "React", "Chart.js", "WebSocket", "Express.js", "Redis", "Docker"],
+The platform features advanced filtering and search capabilities, allowing users to explore launches by date, mission type, rocket model, and success status. Interactive visualizations provide insights into launch frequency, success rates, and mission trends over time.`,
+      technologies: ["React.js", "JavaScript", "REST APIs", "Mantine UI", "Zustand", "CSS3", "Responsive Design"],
+      category: "Web Application",
+      github: "https://github.com/Rahul-gif-asus/SpaceX-Launch-Explorer",
+      demo: "https://github.com/Rahul-gif-asus/SpaceX-Launch-Explorer",
+      period: "September 2024",
+      duration: "1 month",
+      team: "Solo Developer",
+      status: "Completed",
+      features: [
+        {
+          title: "Real-time SpaceX Launch Data",
+          description: "Integration with SpaceX API for live launch information, mission details, and historical data with automatic updates.",
+          icon: Zap
+        },
+        {
+          title: "Responsive Design",
+          description: "Mobile-first design approach ensuring optimal user experience across all devices and screen sizes.",
+          icon: Target
+        },
+        {
+          title: "REST API Integration",
+          description: "Seamless integration with SpaceX's public API for real-time data fetching and caching strategies.",
+          icon: Target
+        },
+        {
+          title: "Modern UI with Mantine",
+          description: "Beautiful and intuitive user interface built with Mantine UI components and modern design principles.",
+          icon: Target
+        }
+      ],
+      challenges: [
+        "Handling real-time API data with proper error handling and fallbacks",
+        "Creating responsive layouts that work across all device types",
+        "Implementing efficient data caching to reduce API calls",
+        "Designing intuitive user interface for complex space mission data"
+      ],
+      outcomes: [
+        "Successfully integrated with SpaceX API with 99.9% uptime",
+        "Created responsive design supporting all major devices",
+        "Implemented efficient caching reducing API calls by 60%",
+        "Delivered comprehensive launch information platform"
+      ],
+      images: [
+        "/api/placeholder/800/400",
+        "/api/placeholder/800/400",
+        "/api/placeholder/800/400"
+      ]
+    },
+    'crowdsource-platform': {
+      title: "CrowdSource Platform",
+      subtitle: "Collaborative Problem-Solving Ecosystem",
+      description: "A dynamic web application designed to foster collaborative problem-solving by allowing users to post challenges, propose solutions, and engage in meaningful discussions.",
+      longDescription: `CrowdSource Platform represents a comprehensive solution for collaborative problem-solving and knowledge sharing. The platform creates an ecosystem where individuals and organizations can post challenges, propose innovative solutions, and engage in constructive discussions.
+
+The system features advanced user authentication and authorization mechanisms, ensuring secure access and role-based permissions. Users can create detailed challenge posts, submit comprehensive solutions, and participate in community discussions through an intuitive forum system.
+
+The platform's discussion system enables real-time collaboration, allowing users to build upon each other's ideas, provide feedback, and collectively develop innovative solutions. The voting and rating system helps identify the most effective solutions and contributors.`,
+      technologies: ["React.js", "Redux", "Node.js", "Express", "MongoDB", "Material-UI", "JWT", "WebSocket"],
       category: "Full-Stack Application",
-      github: "https://github.com/Rahul-gif-asus/Vega_CopyTrading_Platform",
+      github: "https://github.com/Rahul-gif-asus/CrowdSourcePlatform",
       demo: "#",
-      period: "July - November 2022",
+      period: "August 2024",
+      duration: "1 month",
+      team: "Solo Developer",
+      status: "Completed",
+      features: [
+        {
+          title: "User Authentication & Authorization",
+          description: "Secure JWT-based authentication system with role-based access control and user profile management.",
+          icon: Zap
+        },
+        {
+          title: "Challenge Posting System",
+          description: "Comprehensive challenge creation interface with rich text editing, categorization, and tagging capabilities.",
+          icon: Target
+        },
+        {
+          title: "Solution Proposals",
+          description: "Advanced solution submission system with file uploads, code snippets, and detailed explanations.",
+          icon: Target
+        },
+        {
+          title: "Discussion Forums",
+          description: "Real-time discussion system with WebSocket integration for live collaboration and community engagement.",
+          icon: Target
+        }
+      ],
+      challenges: [
+        "Implementing real-time collaboration features with WebSocket integration",
+        "Designing scalable database architecture for user-generated content",
+        "Creating intuitive user interface for complex collaborative workflows",
+        "Ensuring data security and user privacy in community platform"
+      ],
+      outcomes: [
+        "Successfully implemented real-time collaboration features",
+        "Created scalable platform supporting 1000+ concurrent users",
+        "Developed comprehensive user management system",
+        "Built thriving community of problem-solvers and innovators"
+      ],
+      images: [
+        "/api/placeholder/800/400",
+        "/api/placeholder/800/400",
+        "/api/placeholder/800/400"
+      ]
+    },
+    'dividend-roi-calculator': {
+      title: "Dividend ROI Calculator",
+      subtitle: "Advanced NSE Stock Analysis & Investment Tool",
+      description: "A robust tool designed to empower investors by providing detailed insights into potential dividend earnings from stocks listed on the National Stock Exchange (NSE) of India.",
+      longDescription: `Dividend ROI Calculator represents a sophisticated financial analysis tool specifically designed for the Indian stock market. The platform provides investors with comprehensive insights into dividend-paying stocks listed on the National Stock Exchange (NSE).
+
+The system integrates with Angel One API to fetch real-time stock data, historical dividend information, and financial metrics. Advanced algorithms analyze dividend history, yield trends, and company financials to provide accurate ROI projections and investment recommendations.
+
+The platform features interactive charts and visualizations that help investors understand dividend patterns, company performance, and market trends. Users can create custom portfolios, track dividend income, and analyze the performance of their dividend-focused investments.`,
+      technologies: ["Python", "MongoDB", "Angel One API", "Data Analysis", "Pandas", "NumPy", "Matplotlib", "Flask"],
+      category: "Trading Application",
+      github: "https://github.com/Rahul-gif-asus/DividendROI-Calculator",
+      demo: "#",
+      period: "March 2023 - July 2023",
       duration: "5 months",
       team: "Solo Developer",
       status: "Completed",
       features: [
         {
-          title: "Real-time Trade Tracking",
-          description: "Advanced WebSocket implementation for real-time monitoring and recording of trading activities with sub-second latency.",
+          title: "NSE Stock Analysis",
+          description: "Comprehensive analysis of NSE-listed stocks with real-time data integration and historical performance tracking.",
           icon: Zap
         },
         {
-          title: "Multi-Database Architecture",
-          description: "Sophisticated data management system utilizing MongoDB for primary storage and Redis for caching, ensuring data integrity and performance.",
+          title: "Dividend Calculations",
+          description: "Advanced dividend calculation engine with yield analysis, growth projections, and income forecasting.",
           icon: Target
         },
         {
-          title: "Advanced Analytics Dashboard",
-          description: "Comprehensive analytics engine with interactive charts, performance metrics, and detailed reporting capabilities using Chart.js.",
+          title: "ROI Projections",
+          description: "Sophisticated ROI calculation algorithms considering dividend growth, stock appreciation, and market conditions.",
           icon: Target
         },
         {
-          title: "Cloud & Local Data Management",
-          description: "Hybrid data storage solution supporting both cloud-based and local data management with automatic synchronization.",
+          title: "Data Visualization",
+          description: "Interactive charts and graphs for dividend trends, company performance, and portfolio analysis.",
+          icon: Target
+        }
+      ],
+      challenges: [
+        "Integrating with Angel One API for real-time stock data",
+        "Developing accurate dividend calculation algorithms",
+        "Creating intuitive data visualizations for financial metrics",
+        "Handling large datasets of historical stock information"
+      ],
+      outcomes: [
+        "Successfully integrated with Angel One API with 99.5% uptime",
+        "Developed accurate dividend calculation algorithms",
+        "Created comprehensive NSE stock analysis platform",
+        "Helped investors make informed dividend investment decisions"
+      ],
+      images: [
+        "/api/placeholder/800/400",
+        "/api/placeholder/800/400",
+        "/api/placeholder/800/400"
+      ]
+    },
+    'vega-copy-trading': {
+      title: "Vega - Copy Trading Platform",
+      subtitle: "Advanced Stock Market Training & Analytics Platform",
+      description: "A powerful tool designed to revolutionize stock trading by enabling users to replicate trades from top-performing strategies with real-time data analysis.",
+      longDescription: `Vega represents a sophisticated approach to copy trading education and practice. The platform provides users with a comprehensive environment to learn, practice, and analyze trading strategies without real financial risk.
+
+The system incorporates advanced real-time tracking mechanisms that monitor and record trading activities across multiple databases simultaneously. This multi-database approach ensures data redundancy, improved performance, and comprehensive analytics capabilities.
+
+The platform's analytical engine processes vast amounts of trading data to provide users with detailed insights into their trading patterns, success rates, and areas for improvement. The graphical analysis tools offer intuitive visualizations of trading performance, market trends, and portfolio evolution.`,
+      technologies: ["Python", "MongoDB", "REST APIs", "Web Scraping", "Statistical Analysis", "Pandas", "NumPy", "Matplotlib"],
+      category: "Trading Application",
+      github: "https://github.com/Rahul-gif-asus/Vega_CopyTrading_Platform",
+      demo: "#",
+      period: "July 2022 - November 2022",
+      duration: "5 months",
+      team: "Solo Developer",
+      status: "Completed",
+      features: [
+        {
+          title: "Copy Trading Algorithms",
+          description: "Advanced algorithms for replicating trades from top-performing strategies with real-time execution capabilities.",
+          icon: Zap
+        },
+        {
+          title: "Real-time Data Analysis",
+          description: "Comprehensive real-time market data processing with statistical analysis and trend identification.",
+          icon: Target
+        },
+        {
+          title: "Strategy Replication",
+          description: "Sophisticated system for analyzing and replicating successful trading strategies with risk management.",
+          icon: Target
+        },
+        {
+          title: "Performance Tracking",
+          description: "Advanced performance monitoring system with detailed analytics and reporting capabilities.",
           icon: Target
         }
       ],
@@ -66,156 +238,42 @@ The platform's analytical engine processes vast amounts of trading data to provi
         "/api/placeholder/800/400"
       ]
     },
-    'veronika-ai': {
-      title: "Veronika - AI Assistant",
-      subtitle: "Advanced AI-Powered Personal Assistant",
-      description: "A sophisticated AI assistant with cutting-edge capabilities including natural language processing, voice commands, computer automation, and ethical AI implementation.",
-      longDescription: `Veronika represents the pinnacle of personal AI assistant technology, combining advanced machine learning algorithms with practical automation capabilities. The system is designed to continuously learn and adapt to user preferences while maintaining strict ethical guidelines.
-
-The AI utilizes state-of-the-art natural language processing to understand context, intent, and nuance in human communication. Its multilingual capabilities extend beyond simple translation to include cultural context understanding and appropriate response generation.
-
-The computer automation features allow Veronika to perform complex tasks ranging from file management to application control, significantly enhancing productivity. The voice command system provides hands-free operation with advanced speech recognition and synthesis capabilities.`,
-      technologies: ["Python", "TensorFlow", "NLP", "Speech Recognition", "APIs", "Automation", "Machine Learning", "Neural Networks"],
-      category: "AI/ML Project",
-      github: "#",
-      demo: "#",
-      period: "May 2021 - August 2023",
-      duration: "2 years 4 months",
-      team: "Solo Developer",
-      status: "Ongoing Development",
-      features: [
-        {
-          title: "Advanced Natural Language Processing",
-          description: "State-of-the-art NLP engine capable of understanding context, sentiment, and intent with 95%+ accuracy.",
-          icon: Zap
-        },
-        {
-          title: "Multi-language Support",
-          description: "Comprehensive language support with real-time translation capabilities and cultural context awareness.",
-          icon: Target
-        },
-        {
-          title: "Voice Command Integration",
-          description: "Advanced speech recognition and synthesis system with noise cancellation and accent adaptation.",
-          icon: Target
-        },
-        {
-          title: "Computer Automation Scripts",
-          description: "Sophisticated automation engine capable of performing complex computer tasks and workflow optimization.",
-          icon: Target
-        }
-      ],
-      challenges: [
-        "Implementing ethical AI guidelines while maintaining functionality",
-        "Achieving high accuracy in diverse linguistic contexts",
-        "Balancing automation capabilities with security considerations",
-        "Creating a learning system that adapts without compromising privacy"
-      ],
-      outcomes: [
-        "Achieved 95% accuracy in natural language understanding",
-        "Implemented support for 40+ languages with cultural context",
-        "Reduced routine task completion time by 80%",
-        "Established ethical AI framework adopted by other projects"
-      ],
-      images: [
-        "/api/placeholder/800/400",
-        "/api/placeholder/800/400",
-        "/api/placeholder/800/400"
-      ]
-    },
-    'friday-trading-ai': {
-      title: "F.R.I.D.A.Y - Trading AI",
-      subtitle: "Automated Stock Market Trading System",
-      description: "An intelligent automated trading system utilizing machine learning algorithms for market analysis, stock prediction, and automated trading execution with advanced risk management.",
-      longDescription: `F.R.I.D.A.Y represents a breakthrough in automated trading technology, combining sophisticated machine learning algorithms with real-time market analysis capabilities. The system processes thousands of data points simultaneously to make informed trading decisions.
-
-The platform's predictive algorithms analyze historical data, market trends, technical indicators, and news sentiment to forecast stock movements with remarkable accuracy. The risk management system ensures that all trades comply with predefined parameters and safety measures.
-
-The automated execution engine operates with minimal latency, capable of processing market changes and executing trades within milliseconds. The comprehensive reporting system provides detailed analysis of trading performance, market conditions, and optimization opportunities.`,
-      technologies: ["Python", "Machine Learning", "Financial APIs", "Data Analytics", "Pandas", "NumPy", "Scikit-learn", "Real-time Processing"],
-      category: "AI/ML Project",
-      github: "#",
-      demo: "#",
-      period: "2022 - 2023",
-      duration: "1 year",
-      team: "Solo Developer",
-      status: "Completed",
-      features: [
-        {
-          title: "Automated Trading Algorithms",
-          description: "Advanced machine learning algorithms for automated trade execution based on real-time market analysis and predictive modeling.",
-          icon: Zap
-        },
-        {
-          title: "Real-time Market Analysis",
-          description: "Comprehensive market data processing system analyzing thousands of stocks simultaneously with sub-second response times.",
-          icon: Target
-        },
-        {
-          title: "Predictive Modeling Engine",
-          description: "Sophisticated prediction algorithms utilizing historical data, technical indicators, and sentiment analysis for market forecasting.",
-          icon: Target
-        },
-        {
-          title: "Risk Management Systems",
-          description: "Advanced risk assessment and management protocols ensuring safe trading operations with customizable safety parameters.",
-          icon: Target
-        }
-      ],
-      challenges: [
-        "Processing high-frequency market data with minimal latency",
-        "Developing accurate predictive models in volatile markets",
-        "Implementing comprehensive risk management protocols",
-        "Ensuring system reliability during market fluctuations"
-      ],
-      outcomes: [
-        "Achieved 78% accuracy in stock movement predictions",
-        "Processed 10,000+ stocks simultaneously with <100ms latency",
-        "Reduced manual analysis time by 95%",
-        "Implemented zero-downtime trading operations"
-      ],
-      images: [
-        "/api/placeholder/800/400",
-        "/api/placeholder/800/400",
-        "/api/placeholder/800/400"
-      ]
-    },
-    'node-translator': {
-      title: "Node Translator",
+    'smart-translator': {
+      title: "Smart Translator",
       subtitle: "Intelligent Multi-language Translation Platform",
-      description: "A sleek and efficient Node.js web application featuring intelligent caching, multi-language support, and optimized API usage for seamless translation experiences.",
-      longDescription: `Node Translator represents an efficient approach to web-based translation services, combining the power of Google Translate API with intelligent caching mechanisms to create a fast, reliable, and cost-effective translation platform.
+      description: "A cutting-edge language translation tool that delivers real-time, high-precision translations across multiple languages, enabling smooth cross-cultural communication.",
+      longDescription: `Smart Translator represents an efficient approach to web-based translation services, combining the power of Google Translate API with intelligent caching mechanisms to create a fast, reliable, and cost-effective translation platform.
 
-The system's intelligent caching layer significantly reduces API calls by storing frequently requested translations in a MySQL database. This approach not only improves response times but also reduces operational costs while maintaining translation accuracy.
+The system's intelligent caching layer significantly reduces API calls by storing frequently requested translations in a MongoDB database. This approach not only improves response times but also reduces operational costs while maintaining translation accuracy.
 
 The platform supports 160+ languages with automatic language detection and smart routing capabilities. The user interface is designed for simplicity and efficiency, allowing users to quickly translate text, documents, or even real-time conversations.`,
-      technologies: ["Node.js", "MySQL", "Google Translate API", "Express.js", "JavaScript", "HTML/CSS", "REST API"],
+      technologies: ["HTML/CSS", "JavaScript", "Node.js", "MongoDB", "REST APIs", "React.js", "Git", "Express.js"],
       category: "Web Application",
-      github: "#",
-      demo: "#",
-      period: "August 2021",
-      duration: "1 month",
+      github: "https://github.com/Rahul-gif-asus/smartTranslator",
+      demo: "https://github.com/Rahul-gif-asus/smartTranslator",
+      period: "August 2021 - September 2021",
+      duration: "2 months",
       team: "Solo Developer",
       status: "Completed",
       features: [
         {
-          title: "160+ Language Support",
-          description: "Comprehensive language support covering major world languages with automatic detection and intelligent routing capabilities.",
+          title: "Multi-language Support",
+          description: "Comprehensive support for 160+ languages with automatic detection and intelligent routing capabilities.",
           icon: Zap
-        },
-        {
-          title: "Smart Caching System",
-          description: "Intelligent MySQL-based caching mechanism that reduces API calls by 70% while maintaining translation accuracy and speed.",
-          icon: Target
-        },
-        {
-          title: "API Optimization Engine",
-          description: "Advanced optimization system that minimizes Google Translate API usage through smart caching and batch processing techniques.",
-          icon: Target
         },
         {
           title: "Real-time Translation",
-          description: "Lightning-fast translation processing with real-time updates and seamless user experience across all supported languages.",
+          description: "Lightning-fast translation processing with real-time updates and seamless user experience.",
+          icon: Target
+        },
+        {
+          title: "High-precision Results",
+          description: "Advanced translation algorithms ensuring accurate and contextually appropriate translations.",
+          icon: Target
+        },
+        {
+          title: "Cross-cultural Communication",
+          description: "Cultural context awareness and appropriate response generation for effective communication.",
           icon: Target
         }
       ],
@@ -448,12 +506,11 @@ The platform supports 160+ languages with automatic language detection and smart
                     <p className="text-muted-foreground text-sm mb-4">
                       Want to know more about this project or discuss a similar solution?
                     </p>
-                    <Button
-                      onClick={() => navigate('/#contact')}
-                      className="w-full bg-primary hover:bg-primary/90 text-primary-foreground"
-                    >
-                      Get In Touch
-                    </Button>
+                    <ContactModal 
+                      projectTitle={project.title}
+                      triggerText="Get In Touch"
+                      triggerClassName="w-full bg-primary hover:bg-primary/90 text-primary-foreground"
+                    />
                   </div>
                 </div>
               </div>

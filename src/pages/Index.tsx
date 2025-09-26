@@ -4,6 +4,8 @@ import About from "@/components/About";
 import Projects from "@/components/Projects";
 import SkillsModern from "@/components/SkillsModern";
 import Experience from "@/components/Experience";
+import Education from "@/components/Education";
+import Involvement from "@/components/Involvement";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import { useEffect } from "react";
@@ -35,13 +37,15 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-background text-foreground smooth-scroll">
       <Navigation />
       <Hero />
       <About />
       <Projects />
       <SkillsModern />
       <Experience />
+      <Education />
+      <Involvement />
       <Contact />
       <Footer />
     </div>
