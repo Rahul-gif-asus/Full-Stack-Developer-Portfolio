@@ -127,19 +127,28 @@ const Experience = () => {
                   <div className={`ml-12 md:ml-0 md:w-5/12 ${
                     index % 2 === 0 ? 'md:mr-8' : 'md:ml-8'
                   }`}>
-                    <div className="glass p-6 rounded-2xl glow-on-hover">
-                      <div className="flex flex-wrap items-center justify-between mb-4">
-                        <div>
-                          <h4 className="text-xl font-bold text-gradient-primary">
-                            {exp.title}
-                          </h4>
-                          <div className="text-lg font-semibold">{exp.company}</div>
-                          <div className="text-sm text-muted-foreground">
-                            {exp.location} • {exp.type}
+                    <div className="relative group glass p-6 rounded-2xl glow-on-hover overflow-hidden">
+                      {/* Animated gradient background */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-secondary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
+                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+                      
+                      <div className="relative z-10">
+                        <div className="flex flex-wrap items-center justify-between mb-4">
+                          <div className="flex-1">
+                            <h4 className="text-xl font-bold text-gradient-primary mb-2 group-hover:text-gradient-secondary transition-all duration-500">
+                              {exp.title}
+                            </h4>
+                            <div className="text-lg font-semibold text-foreground mb-1">{exp.company}</div>
+                            <div className="text-sm text-muted-foreground">
+                              {exp.location} • {exp.type}
+                            </div>
                           </div>
-                        </div>
-                        <div className="text-sm font-medium text-primary bg-primary/20 px-3 py-1 rounded-full">
-                          {exp.period}
+                          <div className="relative group/badge ml-4">
+                            <div className="absolute inset-0 bg-gradient-to-r from-secondary to-accent rounded-full blur-sm opacity-0 group-hover/badge:opacity-75 transition-all duration-500"></div>
+                            <div className="relative text-sm font-medium text-white bg-gradient-to-r from-primary to-secondary px-4 py-2 rounded-full shadow-lg transform group-hover/badge:scale-105 group-hover/badge:bg-gradient-to-r group-hover/badge:from-secondary group-hover/badge:to-accent transition-all duration-300">
+                              {exp.period}
+                            </div>
+                          </div>
                         </div>
                       </div>
 
@@ -169,16 +178,17 @@ const Experience = () => {
                           {exp.technologies.map((tech, techIndex) => (
                             <span
                               key={techIndex}
-                              className="px-2 py-1 bg-muted rounded text-xs font-medium text-muted-foreground"
+                              className="relative group/tech px-3 py-1.5 bg-gradient-to-r from-muted to-muted/80 hover:from-secondary/20 hover:to-accent/20 rounded-full text-xs font-medium text-muted-foreground hover:text-foreground border border-transparent hover:border-secondary/30 transition-all duration-300 transform hover:scale-105 cursor-default"
                             >
-                              {tech}
+                              <span className="relative z-10">{tech}</span>
+                              <div className="absolute inset-0 bg-gradient-to-r from-secondary/20 to-accent/20 rounded-full opacity-0 group-hover/tech:opacity-100 transition-opacity duration-300"></div>
                             </span>
                           ))}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                         </div>
+                       </div>
+                     </div>
+                   </div>
+                 </div>
               ))}
             </div>
           </div>
@@ -193,24 +203,32 @@ const Experience = () => {
               {education.map((edu, index) => (
                 <div 
                   key={index}
-                  className="glass p-6 rounded-2xl glow-on-hover scroll-animate"
+                  className="relative group glass p-6 rounded-2xl glow-on-hover scroll-animate overflow-hidden"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
+                  {/* Animated gradient background */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-secondary/10 via-accent/5 to-primary/10 opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1200"></div>
+                  
+                  <div className="relative z-10">
                   <div className="flex justify-between items-start mb-4">
-                    <div>
-                      <h4 className="text-lg font-bold text-gradient-primary">
+                    <div className="flex-1">
+                      <h4 className="text-lg font-bold text-gradient-primary mb-2">
                         {edu.degree}
                       </h4>
-                      <div className="font-semibold">{edu.institution}</div>
+                      <div className="font-semibold text-foreground mb-1">{edu.institution}</div>
                       <div className="text-sm text-muted-foreground">
                         {edu.location}
                       </div>
                     </div>
-                    <div className="text-right">
-                      <div className="text-sm font-medium text-primary bg-primary/20 px-3 py-1 rounded-full mb-1">
-                        {edu.period}
+                    <div className="flex flex-col items-end gap-2 ml-4">
+                      <div className="relative group">
+                        <div className="absolute inset-0 bg-gradient-to-r from-secondary to-accent rounded-full blur-sm opacity-0 group-hover:opacity-75 transition-all duration-500"></div>
+                        <div className="relative text-sm font-medium text-white bg-gradient-to-r from-secondary to-accent px-4 py-2 rounded-full shadow-lg transform group-hover:scale-105 transition-all duration-300">
+                          {edu.period}
+                        </div>
                       </div>
-                      <div className="text-sm text-muted-foreground">
+                      <div className="text-sm font-semibold text-accent bg-accent/20 px-3 py-1 rounded-full">
                         {edu.grade}
                       </div>
                     </div>
@@ -227,9 +245,10 @@ const Experience = () => {
                           <span className="text-muted-foreground">{highlight}</span>
                         </li>
                       ))}
-                    </ul>
-                  </div>
-                </div>
+                     </ul>
+                   </div>
+                 </div>
+               </div>
               ))}
             </div>
           </div>
