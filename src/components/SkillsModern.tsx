@@ -180,45 +180,47 @@ const SkillsModern = () => {
           </div>
         </div>
 
-        {/* Languages & Certifications */}
-        <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-          {/* Languages */}
-          <div className="glass p-8 rounded-2xl scroll-animate glow-on-hover">
-            <h3 className="text-xl font-semibold text-gradient-primary mb-6 flex items-center">
-              <Globe className="h-5 w-5 mr-3 text-cyan-400" />
-              Languages
-            </h3>
-            <div className="space-y-4">
-              <div className="flex items-center justify-between p-3 bg-muted/30 rounded-lg">
-                <span className="font-medium">Hindi</span>
-                <span className="text-sm px-3 py-1 bg-green-500/20 text-green-400 border border-green-500/30 rounded-full">
-                  Native
-                </span>
-              </div>
-              <div className="flex items-center justify-between p-3 bg-muted/30 rounded-lg">
-                <span className="font-medium">English</span>
-                <span className="text-sm px-3 py-1 bg-blue-500/20 text-blue-400 border border-blue-500/30 rounded-full">
-                  Fluent
-                </span>
+        {/* Certifications & Languages */}
+        <div className="glass p-8 rounded-2xl scroll-animate glow-on-hover max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-8">
+            {/* Certifications */}
+            <div className="md:col-span-2">
+              <h3 className="text-xl font-semibold text-gradient-primary mb-6 flex items-center">
+                <Shield className="h-5 w-5 mr-3 text-orange-400" />
+                Certifications & Training
+              </h3>
+              <div className="space-y-3">
+                {certifications.map((cert, index) => (
+                  <div key={index} className="flex items-start space-x-3 p-3 hover:bg-muted/30 rounded-lg transition-colors group">
+                    <div className="w-2 h-2 bg-gradient-to-r from-secondary to-accent rounded-full mt-2 flex-shrink-0 group-hover:animate-pulse"></div>
+                    <span className="text-sm text-muted-foreground group-hover:text-foreground leading-relaxed transition-colors">
+                      {cert}
+                    </span>
+                  </div>
+                ))}
               </div>
             </div>
-          </div>
 
-          {/* Certifications */}
-          <div className="glass p-8 rounded-2xl scroll-animate glow-on-hover">
-            <h3 className="text-xl font-semibold text-gradient-primary mb-6 flex items-center">
-              <Shield className="h-5 w-5 mr-3 text-orange-400" />
-              Certifications
-            </h3>
-            <div className="space-y-3">
-              {certifications.map((cert, index) => (
-                <div key={index} className="flex items-start space-x-3 p-2 hover:bg-muted/30 rounded-lg transition-colors">
-                  <div className="w-2 h-2 bg-secondary rounded-full mt-2 flex-shrink-0"></div>
-                  <span className="text-sm text-muted-foreground leading-relaxed">
-                    {cert}
+            {/* Languages */}
+            <div>
+              <h3 className="text-xl font-semibold text-gradient-primary mb-6 flex items-center">
+                <Globe className="h-5 w-5 mr-3 text-cyan-400" />
+                Languages
+              </h3>
+              <div className="space-y-4">
+                <div className="flex items-center justify-between p-3 bg-muted/30 rounded-lg hover:bg-muted/50 transition-colors">
+                  <span className="font-medium">Hindi</span>
+                  <span className="text-xs px-3 py-1 bg-gradient-to-r from-green-500/20 to-green-400/20 text-green-400 border border-green-500/30 rounded-full">
+                    Native
                   </span>
                 </div>
-              ))}
+                <div className="flex items-center justify-between p-3 bg-muted/30 rounded-lg hover:bg-muted/50 transition-colors">
+                  <span className="font-medium">English</span>
+                  <span className="text-xs px-3 py-1 bg-gradient-to-r from-blue-500/20 to-blue-400/20 text-blue-400 border border-blue-500/30 rounded-full">
+                    Fluent
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
         </div>

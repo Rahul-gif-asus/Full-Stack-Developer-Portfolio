@@ -15,29 +15,49 @@ const Hero = () => {
   ];
 
   return (
-    <section id="hero" className="min-h-screen animated-bg relative flex items-center justify-center">
+    <section id="hero" className="min-h-screen animated-bg relative flex items-center justify-center overflow-hidden">
+      {/* Animated background elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-r from-secondary/20 to-accent/20 rounded-full blur-3xl animate-float"></div>
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-r from-primary/10 to-secondary/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute top-1/2 left-1/3 w-64 h-64 bg-gradient-to-r from-accent/15 to-primary/15 rounded-full blur-2xl animate-pulse-glow"></div>
+      </div>
+      
       <div className="container mx-auto px-6 py-20 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Content */}
-          <div className="text-center lg:text-left space-y-8 animate-slide-up">
+          <div className="text-center lg:text-left space-y-8 animate-slide-up relative">
+            {/* Animated particles */}
+            <div className="absolute -top-4 -left-4 w-2 h-2 bg-gradient-to-r from-secondary to-accent rounded-full animate-ping"></div>
+            <div className="absolute top-10 -right-8 w-1 h-1 bg-accent rounded-full animate-pulse"></div>
             <div className="space-y-4">
               <div className="flex items-center justify-center lg:justify-start space-x-2 text-muted-foreground">
                 <MapPin className="h-4 w-4" />
                 <span className="text-sm">Burhanpur, India</span>
               </div>
               
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight">
-                <span className="text-gradient-primary">Rahul</span>
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight relative">
+                <div className="relative overflow-hidden">
+                  <span className="inline-block text-gradient-primary animate-slide-up" style={{ animationDelay: '0.2s' }}>Rahul</span>
+                </div>
                 <br />
-                <span className="text-foreground">Vishwakarma</span>
+                <div className="relative overflow-hidden">
+                  <span className="inline-block text-foreground animate-slide-up" style={{ animationDelay: '0.4s' }}>Vishwakarma</span>
+                </div>
+                {/* Animated text decoration */}
+                <div className="absolute -top-2 -right-4 text-2xl animate-bounce-soft" style={{ animationDelay: '1s' }}>✨</div>
               </h1>
               
-              <div className="text-xl md:text-2xl text-muted-foreground font-light">
-                <span className="text-gradient-secondary">Full Stack Developer</span>
-                <br />
-                <span>AI & Data Enthusiast</span>
-                <br />
-                <span>Builder of Scalable Solutions</span>
+              <div className="text-xl md:text-2xl text-muted-foreground font-light space-y-2">
+                <div className="overflow-hidden">
+                  <span className="inline-block text-gradient-secondary animate-slide-up" style={{ animationDelay: '0.6s' }}>Full Stack Developer</span>
+                </div>
+                <div className="overflow-hidden">
+                  <span className="inline-block animate-slide-up" style={{ animationDelay: '0.8s' }}>AI & Data Enthusiast</span>
+                </div>
+                <div className="overflow-hidden">
+                  <span className="inline-block animate-slide-up" style={{ animationDelay: '1s' }}>Builder of Scalable Solutions</span>
+                </div>
               </div>
             </div>
 
@@ -100,24 +120,37 @@ const Hero = () => {
 
           {/* Avatar */}
           <div className="flex justify-center lg:justify-end animate-float">
-            <div className="relative">
-              <div className="glass rounded-full p-4 animate-pulse-glow">
+            <div className="relative group">
+              {/* Animated background rings */}
+              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-secondary/30 to-accent/30 animate-spin" style={{ animationDuration: '20s' }}></div>
+              <div className="absolute inset-2 rounded-full bg-gradient-to-r from-accent/20 to-primary/20 animate-spin" style={{ animationDuration: '15s', animationDirection: 'reverse' }}></div>
+              
+              <div className="relative glass rounded-full p-4 animate-pulse-glow">
                 <img
                   src={developerAvatar}
                   alt="Rahul Vishwakarma"
-                  className="w-80 h-80 rounded-full object-cover"
+                  className="w-80 h-80 rounded-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
+                
+                {/* Hover overlay */}
+                <div className="absolute inset-4 rounded-full bg-gradient-to-t from-secondary/20 via-transparent to-accent/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               </div>
               
               {/* Floating Tech Icons */}
-              <div className="absolute -top-4 -right-4 glass p-3 rounded-full animate-bounce-soft">
-                <span className="text-2xl">⚛️</span>
+              <div className="absolute -top-4 -right-4 glass p-3 rounded-full animate-bounce-soft hover:scale-110 transition-transform cursor-pointer">
+                <span className="text-2xl animate-pulse">⚛️</span>
               </div>
-              <div className="absolute -bottom-4 -left-4 glass p-3 rounded-full animate-bounce-soft" style={{ animationDelay: '1s' }}>
-                <span className="text-2xl">🐍</span>
+              <div className="absolute -bottom-4 -left-4 glass p-3 rounded-full animate-bounce-soft hover:scale-110 transition-transform cursor-pointer" style={{ animationDelay: '1s' }}>
+                <span className="text-2xl animate-pulse" style={{ animationDelay: '0.5s' }}>🐍</span>
               </div>
-              <div className="absolute top-1/2 -left-8 glass p-3 rounded-full animate-bounce-soft" style={{ animationDelay: '2s' }}>
-                <span className="text-2xl">🚀</span>
+              <div className="absolute top-1/2 -left-8 glass p-3 rounded-full animate-bounce-soft hover:scale-110 transition-transform cursor-pointer" style={{ animationDelay: '2s' }}>
+                <span className="text-2xl animate-pulse" style={{ animationDelay: '1s' }}>🚀</span>
+              </div>
+              <div className="absolute top-1/4 -right-8 glass p-2 rounded-full animate-bounce-soft hover:scale-110 transition-transform cursor-pointer" style={{ animationDelay: '3s' }}>
+                <span className="text-xl animate-pulse" style={{ animationDelay: '1.5s' }}>🤖</span>
+              </div>
+              <div className="absolute bottom-1/4 right-2 glass p-2 rounded-full animate-bounce-soft hover:scale-110 transition-transform cursor-pointer" style={{ animationDelay: '4s' }}>
+                <span className="text-xl animate-pulse" style={{ animationDelay: '2s' }}>📊</span>
               </div>
             </div>
           </div>

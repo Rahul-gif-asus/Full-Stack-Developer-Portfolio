@@ -55,9 +55,13 @@ const Navigation = () => {
             <button
               key={item.id}
               onClick={() => scrollToSection(item.id)}
-              className="text-foreground/80 hover:text-primary transition-colors duration-200 font-medium"
+              className="relative text-foreground/80 hover:text-primary transition-all duration-300 font-medium group overflow-hidden"
             >
-              {item.label}
+              <span className="relative z-10">{item.label}</span>
+              {/* Animated underline */}
+              <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-secondary to-accent transform scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300 ease-out"></div>
+              {/* Glow effect */}
+              <div className="absolute inset-0 bg-gradient-to-r from-secondary/20 to-accent/20 opacity-0 group-hover:opacity-100 blur-sm transition-opacity duration-300"></div>
             </button>
           ))}
         </div>

@@ -144,8 +144,8 @@ const Experience = () => {
                             </div>
                           </div>
                           <div className="relative group/badge ml-4">
-                            <div className="absolute inset-0 bg-gradient-to-r from-secondary to-accent rounded-full blur-sm opacity-0 group-hover/badge:opacity-75 transition-all duration-500"></div>
-                            <div className="relative text-sm font-medium text-white bg-gradient-to-r from-primary to-secondary px-4 py-2 rounded-full shadow-lg transform group-hover/badge:scale-105 group-hover/badge:bg-gradient-to-r group-hover/badge:from-secondary group-hover/badge:to-accent transition-all duration-300">
+                            <div className="absolute inset-0 bg-gradient-to-r from-secondary to-accent rounded-full blur-md opacity-0 group-hover/badge:opacity-100 transition-all duration-500"></div>
+                            <div className="relative text-sm font-bold text-white bg-gradient-to-r from-secondary via-accent to-secondary px-6 py-2.5 rounded-full shadow-xl transform group-hover/badge:scale-110 transition-all duration-300 animate-gradient bg-300%">
                               {exp.period}
                             </div>
                           </div>
@@ -223,8 +223,8 @@ const Experience = () => {
                     </div>
                     <div className="flex flex-col items-end gap-2 ml-4">
                       <div className="relative group">
-                        <div className="absolute inset-0 bg-gradient-to-r from-secondary to-accent rounded-full blur-sm opacity-0 group-hover:opacity-75 transition-all duration-500"></div>
-                        <div className="relative text-sm font-medium text-white bg-gradient-to-r from-secondary to-accent px-4 py-2 rounded-full shadow-lg transform group-hover:scale-105 transition-all duration-300">
+                        <div className="absolute inset-0 bg-gradient-to-r from-secondary to-accent rounded-full blur-md opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+                        <div className="relative text-sm font-bold text-white bg-gradient-to-r from-secondary via-accent to-secondary px-6 py-2.5 rounded-full shadow-xl transform group-hover:scale-110 transition-all duration-300 animate-gradient bg-300%">
                           {edu.period}
                         </div>
                       </div>
