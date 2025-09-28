@@ -6,8 +6,12 @@ import SkillsModern from "@/components/SkillsModern";
 import Experience from "@/components/Experience";
 import Education from "@/components/Education";
 import Involvement from "@/components/Involvement";
+import Blog from "@/components/Blog";
+import Testimonials from "@/components/Testimonials";
+import Analytics from "@/components/Analytics";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import SEO from "@/components/SEO";
 import { useEffect } from "react";
 
 const Index = () => {
@@ -38,6 +42,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground smooth-scroll">
+      <SEO />
       <Navigation />
       <Hero />
       <About />
@@ -46,6 +51,9 @@ const Index = () => {
       <Experience />
       <Education />
       <Involvement />
+      <Blog />
+      <Testimonials />
+      <Analytics />
       <Contact />
       <Footer />
     </div>

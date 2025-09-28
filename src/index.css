@@ -226,6 +226,110 @@
     transform: perspective(1000px) rotateX(-5deg) translateY(-10px);
     box-shadow: var(--shadow-glow);
   }
+
+  /* Advanced Visual Effects */
+  .glass-morphism {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  }
+
+  .glass-morphism-dark {
+    background: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  }
+
+  .neumorphism {
+    background: hsl(var(--background));
+    box-shadow: 20px 20px 60px hsl(var(--muted)), -20px -20px 60px hsl(var(--card));
+  }
+
+  .neumorphism-inset {
+    background: hsl(var(--background));
+    box-shadow: inset 20px 20px 60px hsl(var(--muted)), inset -20px -20px 60px hsl(var(--card));
+  }
+
+  .magnetic-hover {
+    transition: transform 0.3s ease-out;
+  }
+
+  .magnetic-hover:hover {
+    transform: translate(var(--mouse-x, 0), var(--mouse-y, 0)) scale(1.05);
+  }
+
+  .ripple-effect {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ripple-effect::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+  }
+
+  .ripple-effect:active::before {
+    width: 300px;
+    height: 300px;
+  }
+
+  .shimmer-effect {
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite linear;
+  }
+
+  .neon-border {
+    border: 2px solid transparent;
+    background: linear-gradient(45deg, hsl(var(--primary)), hsl(var(--secondary))) border-box;
+    -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: exclude;
+  }
+
+  .parallax-bg {
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .floating-elements {
+    position: relative;
+  }
+
+  .floating-elements::before,
+  .floating-elements::after {
+    content: '';
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, hsl(var(--primary)), hsl(var(--secondary)));
+    opacity: 0.1;
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .floating-elements::before {
+    top: 20%;
+    left: 10%;
+    animation-delay: 0s;
+  }
+
+  .floating-elements::after {
+    bottom: 20%;
+    right: 10%;
+    animation-delay: 3s;
+  }
 }
 
 @layer utilities {
@@ -249,6 +353,53 @@
   .animate-gradient {
     background-size: 300% 300%;
     animation: gradient 3s ease infinite;
+  }
+
+  /* Advanced Animation Classes */
+  .animate-tilt {
+    animation: tilt 8s ease-in-out infinite;
+  }
+
+  .animate-morph {
+    animation: morph 10s ease-in-out infinite;
+  }
+
+  .animate-liquid {
+    animation: liquid 6s ease-in-out infinite;
+  }
+
+  .animate-magnetic {
+    animation: magnetic 0.3s ease-out;
+  }
+
+  .animate-ripple {
+    animation: ripple 0.6s ease-out;
+  }
+
+  .animate-shimmer {
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite linear;
+  }
+
+  .animate-neon-glow {
+    animation: neon-glow 2s ease-in-out infinite;
+  }
+
+  .animate-code-rain {
+    animation: code-rain 3s linear infinite;
+  }
+
+  .animate-particle-float {
+    animation: particle-float 8s ease-in-out infinite;
+  }
+
+  .animate-elastic-bounce {
+    animation: elastic-bounce 0.6s ease-out;
+  }
+
+  .animate-wave {
+    animation: wave 4s ease-in-out infinite;
   }
 
   /* Keyframes */
@@ -282,6 +433,79 @@
   @keyframes gradient {
     0%, 100% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
+  }
+
+  /* Advanced Animations */
+  @keyframes tilt {
+    0%, 100% { transform: perspective(1000px) rotateX(0deg) rotateY(0deg); }
+    25% { transform: perspective(1000px) rotateX(5deg) rotateY(5deg); }
+    50% { transform: perspective(1000px) rotateX(-5deg) rotateY(-5deg); }
+    75% { transform: perspective(1000px) rotateX(5deg) rotateY(-5deg); }
+  }
+
+  @keyframes morph {
+    0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+    25% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+    50% { border-radius: 50% 30% 60% 40% / 30% 50% 60% 70%; }
+    75% { border-radius: 40% 70% 30% 60% / 70% 40% 50% 30%; }
+  }
+
+  @keyframes liquid {
+    0%, 100% { transform: scale(1) rotate(0deg); }
+    25% { transform: scale(1.1) rotate(90deg); }
+    50% { transform: scale(0.9) rotate(180deg); }
+    75% { transform: scale(1.05) rotate(270deg); }
+  }
+
+  @keyframes magnetic {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(var(--mouse-x, 0), var(--mouse-y, 0)); }
+  }
+
+  @keyframes ripple {
+    0% { transform: scale(0); opacity: 1; }
+    100% { transform: scale(4); opacity: 0; }
+  }
+
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+
+  @keyframes neon-glow {
+    0%, 100% { 
+      text-shadow: 0 0 5px currentColor, 0 0 10px currentColor, 0 0 15px currentColor;
+    }
+    50% { 
+      text-shadow: 0 0 10px currentColor, 0 0 20px currentColor, 0 0 30px currentColor;
+    }
+  }
+
+  @keyframes code-rain {
+    0% { transform: translateY(-100vh); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateY(100vh); opacity: 0; }
+  }
+
+  @keyframes particle-float {
+    0%, 100% { transform: translateY(0px) translateX(0px) rotate(0deg); }
+    25% { transform: translateY(-20px) translateX(10px) rotate(90deg); }
+    50% { transform: translateY(-10px) translateX(-10px) rotate(180deg); }
+    75% { transform: translateY(-30px) translateX(5px) rotate(270deg); }
+  }
+
+  @keyframes elastic-bounce {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+  }
+
+  @keyframes wave {
+    0%, 100% { transform: translateX(0) translateY(0); }
+    25% { transform: translateX(10px) translateY(-5px); }
+    50% { transform: translateX(-5px) translateY(10px); }
+    75% { transform: translateX(-10px) translateY(-5px); }
   }
 
   /* Scroll Animations */

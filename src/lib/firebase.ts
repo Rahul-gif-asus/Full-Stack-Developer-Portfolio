@@ -57,6 +57,13 @@ export interface ContactFormData {
   timestamp?: Timestamp;
 }
 
+// Newsletter subscription interface
+export interface NewsletterSubscription {
+  email: string;
+  subscribedAt: Timestamp;
+  timestamp: Timestamp;
+}
+
 // Save contact form data to Firestore
 export const saveContactForm = async (formData: ContactFormData): Promise<string> => {
   try {
@@ -120,6 +127,64 @@ export const deleteMultipleContactSubmissions = async (ids: string[]): Promise<v
     await Promise.all(deletePromises);
   } catch (error) {
     console.error("Error deleting multiple contact submissions:", error);
+    throw error;
+  }
+};
+
+// Save newsletter subscription
+export const saveNewsletterSubscription = async (subscription: { email: string }): Promise<string> => {
+  try {
+    const newsletterCollection = collection(db, "newsletter");
+    const docRef = await addDoc(newsletterCollection, {
+      ...subscription,
+      subscribedAt: Timestamp.now(),
+      timestamp: Timestamp.now()
+    });
+    return docRef.id;
+  } catch (error) {
+    console.error("Error saving newsletter subscription:", error);
+    throw error;
+  }
+};
+
+// Get all newsletter subscriptions
+export const getNewsletterSubscriptions = async (): Promise<NewsletterSubscription[]> => {
+  try {
+    const newsletterCollection = collection(db, "newsletter");
+    const q = query(newsletterCollection, orderBy("subscribedAt", "desc"));
+    const querySnapshot = await getDocs(q);
+    
+    return querySnapshot.docs.map(doc => {
+      const data = doc.data() as NewsletterSubscription;
+      return {
+        ...data,
+        id: doc.id
+      } as NewsletterSubscription & { id: string };
+    });
+  } catch (error) {
+    console.error("Error getting newsletter subscriptions:", error);
+    throw error;
+  }
+};
+
+// Delete newsletter subscription
+export const deleteNewsletterSubscription = async (id: string): Promise<void> => {
+  try {
+    const newsletterDoc = doc(db, "newsletter", id);
+    await deleteDoc(newsletterDoc);
+  } catch (error) {
+    console.error("Error deleting newsletter subscription:", error);
+    throw error;
+  }
+};
+
+// Delete multiple newsletter subscriptions
+export const deleteMultipleNewsletterSubscriptions = async (ids: string[]): Promise<void> => {
+  try {
+    const deletePromises = ids.map(id => deleteNewsletterSubscription(id));
+    await Promise.all(deletePromises);
+  } catch (error) {
+    console.error("Error deleting multiple newsletter subscriptions:", error);
     throw error;
   }
 };

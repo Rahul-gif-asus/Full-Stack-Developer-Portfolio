@@ -1,6 +1,9 @@
 import { Button } from '@/components/ui/button';
 import { Download, Mail, Github, Linkedin, MapPin, Phone } from 'lucide-react';
 import { bioData } from '@/data/resume-data';
+import MagneticButton from './MagneticButton';
+import RippleButton from './RippleButton';
+import ParticleBackground from './ParticleBackground';
 
 const Hero = () => {
   const handleDownloadResume = () => {
@@ -21,6 +24,9 @@ const Hero = () => {
 
   return (
     <section id="hero" className="min-h-screen animated-bg relative flex items-center justify-center overflow-hidden">
+      {/* Particle Background */}
+      <ParticleBackground />
+      
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-r from-secondary/20 to-accent/20 rounded-full blur-3xl animate-float"></div>
@@ -82,21 +88,21 @@ const Hero = () => {
 
             {/* Action Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <Button 
+              <MagneticButton 
                 onClick={handleDownloadResume}
                 className="bg-primary hover:bg-primary/90 text-primary-foreground glow-on-hover px-8 py-6 text-lg"
               >
                 <Download className="mr-2 h-5 w-5" />
                 Download Resume
-              </Button>
+              </MagneticButton>
               
-              <Button 
+              <RippleButton 
                 variant="outline"
                 onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
                 className="border-primary text-primary hover:bg-primary hover:text-primary-foreground px-8 py-6 text-lg"
               >
                 Let's Connect
-              </Button>
+              </RippleButton>
             </div>
 
             {/* Social Links */}

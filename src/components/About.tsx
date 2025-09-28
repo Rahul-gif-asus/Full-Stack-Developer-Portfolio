@@ -1,24 +1,38 @@
+import AnimatedCounter from './AnimatedCounter';
+
 const About = () => {
   const highlights = [
     {
       title: "Full-Stack Expertise",
       description: "Proficient in MERN stack, Python, and modern web technologies with a focus on scalable solutions.",
-      icon: "🔧"
+      icon: "🔧",
+      count: 15,
+      suffix: "+",
+      label: "Projects"
     },
     {
       title: "AI & Data Science",
       description: "Experienced in machine learning, data analysis, and building intelligent systems for real-world applications.",
-      icon: "🤖"
+      icon: "🤖",
+      count: 8,
+      suffix: "+",
+      label: "ML Models"
     },
     {
       title: "Algorithmic Trading",
       description: "Specialized in developing automated trading systems and financial data analysis tools.",
-      icon: "📈"
+      icon: "📈",
+      count: 5,
+      suffix: "+",
+      label: "Trading Systems"
     },
     {
       title: "Leadership",
       description: "Proven track record in team management and community building with strong collaborative skills.",
-      icon: "👥"
+      icon: "👥",
+      count: 3,
+      suffix: "+",
+      label: "Years Leading"
     }
   ];
 
@@ -69,19 +83,27 @@ const About = () => {
                 <h4 className="text-xl font-semibold mb-6 text-center">Quick Stats</h4>
                 <div className="grid grid-cols-2 gap-6 text-center">
                   <div>
-                    <div className="text-3xl font-bold text-gradient-primary">3+</div>
+                    <div className="text-3xl font-bold text-gradient-primary">
+                      <AnimatedCounter end={3} suffix="+" />
+                    </div>
                     <div className="text-sm text-muted-foreground">Years Experience</div>
                   </div>
                   <div>
-                    <div className="text-3xl font-bold text-gradient-secondary">15+</div>
+                    <div className="text-3xl font-bold text-gradient-secondary">
+                      <AnimatedCounter end={15} suffix="+" />
+                    </div>
                     <div className="text-sm text-muted-foreground">Projects Completed</div>
                   </div>
                   <div>
-                    <div className="text-3xl font-bold text-gradient-primary">10+</div>
+                    <div className="text-3xl font-bold text-gradient-primary">
+                      <AnimatedCounter end={10} suffix="+" />
+                    </div>
                     <div className="text-sm text-muted-foreground">Technologies</div>
                   </div>
                   <div>
-                    <div className="text-3xl font-bold text-gradient-secondary">5+</div>
+                    <div className="text-3xl font-bold text-gradient-secondary">
+                      <AnimatedCounter end={5} suffix="+" />
+                    </div>
                     <div className="text-sm text-muted-foreground">Certifications</div>
                   </div>
                 </div>
@@ -99,13 +121,17 @@ const About = () => {
               >
                 <div className="flex items-start space-x-4">
                   <div className="text-4xl flex-shrink-0">{highlight.icon}</div>
-                  <div>
+                  <div className="flex-1">
                     <h4 className="text-xl font-semibold mb-3 text-gradient-primary">
                       {highlight.title}
                     </h4>
-                    <p className="text-muted-foreground leading-relaxed">
+                    <p className="text-muted-foreground leading-relaxed mb-4">
                       {highlight.description}
                     </p>
+                    <div className="text-2xl font-bold text-gradient-secondary">
+                      <AnimatedCounter end={highlight.count} suffix={highlight.suffix} />
+                      <span className="text-sm text-muted-foreground ml-2">{highlight.label}</span>
+                    </div>
                   </div>
                 </div>
               </div>
