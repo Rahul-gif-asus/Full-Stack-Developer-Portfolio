@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics, isSupported, Analytics } from "firebase/analytics";
-import { getFirestore, collection, addDoc, getDocs, orderBy, query, Timestamp } from "firebase/firestore";
+import { getFirestore, collection, addDoc, getDocs, orderBy, query, Timestamp, deleteDoc, doc } from "firebase/firestore";
 import { getAuth, signInWithEmailAndPassword, signOut } from "firebase/auth";
 
 // Your web app's Firebase configuration
@@ -100,6 +100,28 @@ export const loginAdmin = async (email: string, password: string) => {
 
 export const logoutAdmin = async () => {
   return signOut(auth);
+};
+
+// Delete contact form submission
+export const deleteContactSubmission = async (id: string): Promise<void> => {
+  try {
+    const contactDoc = doc(db, "contacts", id);
+    await deleteDoc(contactDoc);
+  } catch (error) {
+    console.error("Error deleting contact submission:", error);
+    throw error;
+  }
+};
+
+// Delete multiple contact form submissions
+export const deleteMultipleContactSubmissions = async (ids: string[]): Promise<void> => {
+  try {
+    const deletePromises = ids.map(id => deleteContactSubmission(id));
+    await Promise.all(deletePromises);
+  } catch (error) {
+    console.error("Error deleting multiple contact submissions:", error);
+    throw error;
+  }
 };
 
 // Export the Firebase app, auth, db and analytics
