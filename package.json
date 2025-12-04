@@ -4,12 +4,12 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "bun run vite",
-    "build": "bun run vite build",
-    "build:dev": "bun run vite build --mode development",
-    "lint": "bun run eslint .",
-    "preview": "bun run vite preview",
-    "start": "bun run dev"
+    "dev": "vite",
+    "build": "vite build",
+    "build:dev": "vite build --mode development",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "start": "npm run dev"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
