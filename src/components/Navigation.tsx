@@ -1,16 +1,31 @@
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
-import CustomThemeToggle from './CustomThemeToggle';
+import CircularThemeToggle from './CircularThemeToggle';
 import ScrollProgress from './ScrollProgress';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState('hero');
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
+      
+      const sections = ['hero', 'about', 'projects', 'skills', 'experience', 'blog', 'testimonials', 'analytics', 'contact'];
+      
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          if (rect.top <= 100 && rect.bottom >= 100) {
+            setActiveSection(section);
+            break;
+          }
+        }
+      }
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -40,65 +55,95 @@ const Navigation = () => {
   return (
     <>
       <ScrollProgress />
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'glass py-2' : 'py-4'
-      }`}>
+      <motion.nav 
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.5 }}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 hidden md:block ${
+          isScrolled 
+            ? 'bg-background/80 backdrop-blur-xl border-b border-white/5 py-2' 
+            : 'bg-transparent py-4'
+        }`}
+      >
         <div className="container mx-auto px-6 flex items-center justify-between">
-          {/* Logo */}
-          <div className="font-bold text-xl text-gradient-primary cursor-pointer" 
-               onClick={() => scrollToSection('hero')}>
+          <motion.div 
+            whileHover={{ scale: 1.05 }}
+            className="font-bold text-2xl bg-gradient-to-r from-secondary to-accent bg-clip-text text-transparent cursor-pointer" 
+            onClick={() => scrollToSection('hero')}
+            data-testid="link-logo"
+          >
             RV
-          </div>
+          </motion.div>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="flex items-center gap-1">
             {navItems.map((item) => (
-              <button
+              <motion.button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className="relative text-foreground/80 hover:text-primary transition-all duration-300 font-medium group overflow-hidden"
+                whileHover={{ y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                className={`relative px-3 py-2 text-sm font-medium transition-all duration-300 rounded-lg ${
+                  activeSection === item.id
+                    ? 'text-foreground'
+                    : 'text-muted-foreground hover:text-foreground'
+                }`}
+                data-testid={`link-nav-${item.id}`}
               >
+                {activeSection === item.id && (
+                  <motion.div
+                    layoutId="activeNavBg"
+                    className="absolute inset-0 bg-gradient-to-r from-secondary/20 to-accent/20 rounded-lg"
+                    transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+                  />
+                )}
                 <span className="relative z-10">{item.label}</span>
-                {/* Animated underline */}
-                <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-secondary to-accent transform scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300 ease-out"></div>
-                {/* Glow effect */}
-                <div className="absolute inset-0 bg-gradient-to-r from-secondary/20 to-accent/20 opacity-0 group-hover:opacity-100 blur-sm transition-opacity duration-300"></div>
-              </button>
+              </motion.button>
             ))}
           </div>
 
-          {/* Theme Toggle & Mobile Menu */}
-          <div className="flex items-center space-x-4">
-            <CustomThemeToggle />
-
-            <Button
-              variant="ghost"
-              size="icon"
-              className="md:hidden"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-            >
-              {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-            </Button>
-          </div>
+          <CircularThemeToggle />
         </div>
+      </motion.nav>
 
-        {/* Mobile Menu */}
+      <div className="md:hidden fixed top-4 right-4 z-50 flex items-center gap-2">
+        <CircularThemeToggle />
+      </div>
+
+      <AnimatePresence>
         {isMenuOpen && (
-          <div className="md:hidden glass mt-2 mx-6 rounded-lg animate-slide-up">
-            <div className="p-4 space-y-4">
-              {navItems.map((item) => (
-                <button
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="md:hidden fixed inset-0 z-40 bg-background/95 backdrop-blur-xl"
+          >
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 20 }}
+              className="flex flex-col items-center justify-center h-full gap-6"
+            >
+              {navItems.map((item, index) => (
+                <motion.button
                   key={item.id}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.05 }}
                   onClick={() => scrollToSection(item.id)}
-                  className="block w-full text-left text-foreground/80 hover:text-primary transition-colors duration-200 font-medium py-2"
+                  className={`text-2xl font-medium transition-all duration-300 ${
+                    activeSection === item.id
+                      ? 'text-secondary'
+                      : 'text-muted-foreground hover:text-foreground'
+                  }`}
+                  data-testid={`link-mobile-menu-${item.id}`}
                 >
                   {item.label}
-                </button>
+                </motion.button>
               ))}
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         )}
-      </nav>
+      </AnimatePresence>
     </>
   );
 };

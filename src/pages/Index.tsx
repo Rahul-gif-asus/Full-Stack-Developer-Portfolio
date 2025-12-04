@@ -12,10 +12,10 @@ import Analytics from "@/components/Analytics";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
+import MobileBottomNav from "@/components/MobileBottomNav";
 import { useEffect } from "react";
 
 const Index = () => {
-  // Initialize scroll animations
   useEffect(() => {
     const observerOptions = {
       threshold: 0.1,
@@ -30,12 +30,17 @@ const Index = () => {
       });
     }, observerOptions);
 
-    // Observe all scroll-animate elements
     const elements = document.querySelectorAll(".scroll-animate");
     elements.forEach((el) => observer.observe(el));
 
-    // Set dark theme by default
-    document.documentElement.classList.add('dark');
+    const savedTheme = localStorage.getItem('theme');
+    if (!savedTheme) {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.documentElement.classList.toggle('dark', savedTheme === 'dark');
+      document.documentElement.classList.toggle('light', savedTheme === 'light');
+    }
 
     return () => observer.disconnect();
   }, []);
@@ -56,6 +61,7 @@ const Index = () => {
       <Analytics />
       <Contact />
       <Footer />
+      <MobileBottomNav />
     </div>
   );
 };
